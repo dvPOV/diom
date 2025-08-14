@@ -1,28 +1,29 @@
-import {defineType, defineField} from 'sanity'
+import {defineField, defineType} from 'sanity'
+
 export default defineType({
   name: 'hero',
-  type: 'document',
   title: 'Hero',
+  type: 'document',
   fields: [
-    defineField({ name:'videoKind', type:'string', options:{ list:['youtube','vimeo'] } }),
-    defineField({ name:'videoId', type:'string' }),
+    defineField({name: 'title', title: 'Title', type: 'string'}),
+    defineField({name: 'subtitle', title: 'Subtitle', type: 'text'}),
     defineField({
-      name:'title',
-      type:'object',
-      fields:[
-        {name:'ru', type:'string'},
-        {name:'en', type:'string'},
-        {name:'ka', type:'string'},
-      ]
+      name: 'provider',
+      title: 'Provider',
+      type: 'string',
+      options: {list: ['youtube', 'vimeo', 'instagram']}
+    }),
+    defineField({name: 'videoId', title: 'Video ID', type: 'string'}),
+    defineField({
+      name: 'thumbnail',
+      title: 'Thumbnail (image, optional)',
+      type: 'image'
     }),
     defineField({
-      name:'text',
-      type:'object',
-      fields:[
-        {name:'ru', type:'text'},
-        {name:'en', type:'text'},
-        {name:'ka', type:'text'},
-      ]
+      name: 'badges',
+      title: 'Badges',
+      type: 'array',
+      of: [{type: 'string'}]
     })
   ]
 })

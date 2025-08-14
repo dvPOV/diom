@@ -1,21 +1,29 @@
-import {defineType, defineField} from 'sanity'
+import {defineField, defineType} from 'sanity'
+
 export default defineType({
   name: 'portfolioItem',
-  type: 'document',
   title: 'Portfolio item',
+  type: 'document',
   fields: [
-    defineField({ name:'order', type:'number' }),
-    defineField({ name:'kind', type:'string', options:{ list:['youtube','instagram'] } }),
-    defineField({ name:'videoId', type:'string', validation: r=>r.required() }),
     defineField({
-      name:'title',
-      title:'Title (i18n)',
-      type:'object',
-      fields:[
-        {name:'ru', type:'string'},
-        {name:'en', type:'string'},
-        {name:'ka', type:'string'},
-      ]
+      name: 'provider',
+      title: 'Provider',
+      type: 'string',
+      options: {list: ['youtube', 'vimeo', 'instagram']}
     }),
-  ]
+    defineField({name: 'videoId', title: 'Video ID', type: 'string'}),
+    defineField({name: 'title', title: 'Title', type: 'string'}),
+    defineField({
+      name: 'ratio',
+      title: 'Aspect ratio (e.g. 3:4 for IG)',
+      type: 'string'
+    }),
+    defineField({
+      name: 'thumbnail',
+      title: 'Thumbnail (image, optional)',
+      type: 'image'
+    }),
+    defineField({name: 'sortIndex', title: 'Sort index', type: 'number'})
+  ],
+  orderings: [{name: 'sortIndexAsc', by: [{field: 'sortIndex', direction: 'asc'}]}]
 })

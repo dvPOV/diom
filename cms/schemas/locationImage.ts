@@ -1,20 +1,14 @@
-import {defineType, defineField} from 'sanity'
+import {defineField, defineType} from 'sanity'
+
 export default defineType({
   name: 'locationImage',
+  title: 'Location Item (vertical 9:16)',
   type: 'document',
-  title: 'Location image',
   fields: [
-    defineField({ name:'order', type:'number' }),
-    defineField({ name:'image', type:'image', options:{hotspot:true}, validation:r=>r.required() }),
-    defineField({
-      name:'alt',
-      title:'Alt (i18n)',
-      type:'object',
-      fields:[
-        {name:'ru', type:'string'},
-        {name:'en', type:'string'},
-        {name:'ka', type:'string'},
-      ]
-    }),
-  ]
+    defineField({name: 'title', title: 'Title', type: 'string'}),
+    defineField({name: 'ratio', title: 'Aspect ratio', type: 'string'}),
+    defineField({name: 'image', title: 'Image (9:16)', type: 'image'}),
+    defineField({name: 'sortIndex', title: 'Sort index', type: 'number'})
+  ],
+  orderings: [{name: 'sortIndexAsc', by: [{field: 'sortIndex', direction: 'asc'}]}]
 })

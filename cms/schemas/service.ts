@@ -1,27 +1,18 @@
-import {defineType, defineField} from 'sanity'
+import {defineField, defineType} from 'sanity'
+
 export default defineType({
   name: 'service',
-  type: 'document',
   title: 'Service',
+  type: 'document',
   fields: [
-    defineField({ name:'order', type:'number' }),
+    defineField({name: 'title', title: 'Title', type: 'string'}),
     defineField({
-      name:'title',
-      type:'object',
-      fields:[
-        {name:'ru', type:'string'},
-        {name:'en', type:'string'},
-        {name:'ka', type:'string'},
-      ]
+      name: 'bullets',
+      title: 'Bullets',
+      type: 'array',
+      of: [{type: 'string'}]
     }),
-    defineField({
-      name:'bullets',
-      type:'object',
-      fields:[
-        {name:'ru', type:'array', of:[{type:'string'}]},
-        {name:'en', type:'array', of:[{type:'string'}]},
-        {name:'ka', type:'array', of:[{type:'string'}]},
-      ]
-    }),
-  ]
+    defineField({name: 'sortIndex', title: 'Sort index', type: 'number'})
+  ],
+  orderings: [{name: 'sortIndexAsc', by: [{field: 'sortIndex', direction: 'asc'}]}]
 })

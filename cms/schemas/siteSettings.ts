@@ -1,13 +1,16 @@
-import {defineType, defineField} from 'sanity'
+import {defineField, defineType} from 'sanity'
+
 export default defineType({
   name: 'siteSettings',
-  type: 'document',
   title: 'Site Settings',
+  type: 'document',
   fields: [
-    defineField({ name:'logo', type:'image', options:{hotspot:true} }),
-    defineField({ name:'instagram', type:'url' }),
-    defineField({ name:'phone', type:'string' }),
-    defineField({ name:'email', type:'string' }),
-    defineField({ name:'address', type:'string' }),
+    defineField({name: 'siteTitle', title: 'Site title', type: 'string'}),
+    defineField({name: 'instagramUrl', title: 'Instagram URL', type: 'url'}),
+    defineField({name: 'email', title: 'Email', type: 'string'}),
+    defineField({name: 'phone', title: 'Phone', type: 'string'}),
+    defineField({name: 'address', title: 'Address', type: 'string'}),
+    defineField({name: 'howToReachUrl', title: 'How to reach URL', type: 'url'}),
+    defineField({name: 'logo', title: 'Logo (image)', type: 'image'}),
   ]
 })

@@ -1,28 +1,26 @@
-import {defineType, defineField} from 'sanity'
+import {defineField, defineType} from 'sanity'
+
 export default defineType({
   name: 'vocalOffer',
-  type: 'document',
   title: 'Vocal Offer',
+  type: 'document',
   fields: [
+    defineField({name: 'title', title: 'Title', type: 'string'}),
+    defineField({name: 'description', title: 'Description', type: 'text'}),
     defineField({
-      name:'title', type:'object',
-      fields:[{name:'ru',type:'string'},{name:'en',type:'string'},{name:'ka',type:'string'}]
+      name: 'bullets',
+      title: 'Bullets',
+      type: 'array',
+      of: [{type: 'string'}]
     }),
+    defineField({name: 'priceNote', title: 'Price note', type: 'string'}),
     defineField({
-      name:'text', type:'object',
-      fields:[{name:'ru',type:'text'},{name:'en',type:'text'},{name:'ka',type:'text'}]
+      name: 'provider',
+      title: 'Provider',
+      type: 'string',
+      options: {list: ['youtube', 'vimeo', 'instagram']}
     }),
-    defineField({
-      name:'bullets', type:'object',
-      fields:[
-        {name:'ru', type:'array', of:[{type:'string'}]},
-        {name:'en', type:'array', of:[{type:'string'}]},
-        {name:'ka', type:'array', of:[{type:'string'}]},
-      ]
-    }),
-    defineField({
-      name:'priceNote', type:'object',
-      fields:[{name:'ru',type:'string'},{name:'en',type:'string'},{name:'ka',type:'string'}]
-    }),
+    defineField({name: 'videoId', title: 'Video ID', type: 'string'}),
+    defineField({name: 'ratio', title: 'Aspect ratio', type: 'string'})
   ]
 })
