@@ -1,0 +1,14 @@
+{"_type":"vocalOffer","title":{"ru":"Спецпредложение для вокалистов","en":"Special offer for vocalists","ka":"სპეც შეთავაზება მომღერლებისთვის"},"text":{"ru":"Готовое видео: запись вокала + сведение + вертикальная съёмка.","en":"Finished video: vocal recording + mixing + vertical shoot.","ka":"მზად ვიდეო: ვოკალის ჩაწერა + მიქსი + ვერტიკალური გადაღება."},"bullets":{"ru":["Готовое видео для YouTube в 4K","2–3 рилс на базе готового видео","Два ракурса + таймინგ под бит"]},"priceNote":{"ru":"300 лари «под ключ»: включает 1 час в студии и сведение одного трека.","en":"300 GEL turnkey: includes 1 hour in studio and one track mixing.","ka":"300 ლარი turnkey: მოიცავს 1 საათს სტუდიაში და ერთი ტრეკის მიქსს."}}
+{"_type":"service","order":1,"title":{"ru":"Подкасты","en":"Podcasts","ka":"პოდკასტები"},"bullets":{"ru":["Подготовка и сетап","Аудио/видео запись","Монтаж, графика и титры"]}}
+{"_type":"service","order":2,"title":{"ru":"Запись вокала","en":"Vocal recording","ka":"ვოკალის ჩაწერა"},"bullets":{"ru":["YouTube / Reels / Shorts","Мультикамерная съёмка","Сведение, быстрая публикация"]}}
+{"_type":"service","order":3,"title":{"ru":"Трансляции с вашей локации","en":"On-site live streaming","ka":"ლაივები თქვენი ლოკაციიდან"},"bullets":{"ru":["Мобильный стрим-сетап","Несколько камер и графика","Чат и модерация"]}}
+{"_type":"portfolioItem","order":1,"kind":"youtube","videoId":"drGxjSkI3UQ","title":{"ru":"Подкаст YouTube"}}
+{"_type":"portfolioItem","order":2,"kind":"youtube","videoId":"3dD_8ztcwto","title":{"ru":"YouTube Шоу"}}
+{"_type":"portfolioItem","order":3,"kind":"youtube","videoId":"5qap5aO4i9A","title":{"ru":"Прямая трансляция"}}
+{"_type":"portfolioItem","order":4,"kind":"instagram","videoId":"DD9noDkI0YL","title":{"ru":"Запись вокала"}}
+{"_type":"pricingCard","order":1,"title":{"ru":"Аренда для самостоятельных съёмок"},"price":{"ru":"от 60 лари/час"},"features":{"ru":["Базовый свет","Фоны","2 микрофона + рекордер","Помощь ассистента"]}}
+{"_type":"pricingCard","order":2,"title":{"ru":"Стримминг/трансляция"},"price":{"ru":"от 140 лари/час"},"features":{"ru":["Мультикамерный стрим","Графика/титры","Чат/RTMP","Техподдержка"]}}
+{"_type":"pricingCard","order":3,"title":{"ru":"Съёмка видео"},"price":{"ru":"от 130 лари/час"},"features":{"ru":["Оператор","Свет","Фон/локация","Передача материала"]}}
+{"_type":"pricingCard","order":4,"title":{"ru":"Съёмка и монтаж"},"price":{"ru":"от 200 лари/час"},"features":{"ru":["Оператор","Монтаж","Базовая графика","Экспорт 4K"]}}
+{"_type":"pricingCard","order":5,"title":{"ru":"Съёмка и запись вокала «под ключ»"},"price":{"ru":"300 лари/час"},"features":{"ru":["Запись вокала","Сведение одного трека","Съёмка","4K экспорт"]}}
+{"_type":"pricingCard","order":6,"title":{"ru":"Выездные трансляции"},"price":{"ru":"от $500/смена"},"features":{"ru":["Мобильный кейс","Несколько камер","Графика и чат","Тех. команда"]}}
