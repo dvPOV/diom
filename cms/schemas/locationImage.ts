@@ -2,13 +2,25 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'locationImage',
-  title: 'Location Item (vertical 9:16)',
+  title: 'Location image',
   type: 'document',
   fields: [
-    defineField({name: 'title', title: 'Title', type: 'string'}),
-    defineField({name: 'ratio', title: 'Aspect ratio', type: 'string'}),
-    defineField({name: 'image', title: 'Image (9:16)', type: 'image'}),
-    defineField({name: 'sortIndex', title: 'Sort index', type: 'number'})
+    defineField({
+      name: 'photo',
+      title: 'Photo',
+      type: 'image',
+      options: {hotspot: true},
+      validation: r => r.required(),
+    }),
+    defineField({name: 'order', title: 'Order', type: 'number'}),
   ],
-  orderings: [{name: 'sortIndexAsc', by: [{field: 'sortIndex', direction: 'asc'}]}]
+  orderings: [
+    {name: 'orderAsc', title: 'Order ↑', by: [{field: 'order', direction: 'asc'}]},
+  ],
+    preview: {
+      select: {en: 'title.en', ru: 'title.ru', ka: 'title.ka'},
+      prepare({en, ru, ka}) {
+        return {title: en || ru || ka || 'Location item'}
+    },
+  },
 })

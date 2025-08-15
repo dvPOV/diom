@@ -18,4 +18,4 @@ export const schemaTypes = [
   pricingCard,
   vocalOffer,
   locationImage
-]
+] 

@@ -8,7 +8,7 @@ export default defineConfig({
   name: 'default',
   title: 'Diom CMS',
   projectId: 'og6hntl9',
-  dataset: 'production',
+  dataset: 'prod2025',
   plugins: [deskTool(), visionTool()],
   schema: {
     types: schemaTypes, // ← здесь используем schemaTypes

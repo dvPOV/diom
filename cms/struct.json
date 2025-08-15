@@ -1,0 +1,171 @@
+{
+  "documents": {
+    "siteSettings": {
+      "fields": {
+        "logo": { "type": "image", "note": "image + hotspot" },
+
+        "nav": {
+          "type": "object",
+          "fields": {
+            "services": { "type": "localeString" },
+            "work":     { "type": "localeString" },
+            "pricing":  { "type": "localeString" },
+            "location": { "type": "localeString" },
+            "contact":  { "type": "localeString" },
+            "book":     { "type": "localeString" }
+          },
+          "note": "Подписи пунктов меню и кнопки Book"
+        },
+
+        "phone":     { "type": "string"  },
+        "email":     { "type": "string"  },
+        "instagram": { "type": "url"     },
+        "address":   { "type": "localeString" },
+
+        "portfolioLead": { "type": "localeString", "note": "Текст под заголовком Портфолио" },
+        "pricingLead":   { "type": "localeString", "note": "Текст-примечание в тарифах (про ориентировочные цены)" },
+
+        "form": {
+          "type": "object",
+          "fields": {
+            "nameLabel":    { "type": "localeString", "legacy": "ui.formName"     },
+            "phoneLabel":   { "type": "localeString", "legacy": "ui.formPhone"    },
+            "interestLabel":{ "type": "localeString", "legacy": "ui.formInterest" },
+            "messageLabel": { "type": "localeString", "legacy": "ui.formMessage"  },
+            "submitLabel":  { "type": "localeString", "legacy": "ui.formSubmit"   },
+
+            "interestOptions": {
+              "type": "array",
+              "of": {
+                "type": "object",
+                "fields": {
+                  "key":   { "type": "string", "note": "стабильный идентификатор варианта" },
+                  "label": { "type": "localeString" }
+                }
+              },
+              "legacy": "ui.interestOptions[] (string | object)",
+              "note": "если в legacy это были строки — конвертируем в {key, label:{en|ru|ka}}"
+            }
+          }
+        }
+      },
+      "notes": [
+        "Документ-синглтон (рекомендуемый _id: \"siteSettings::singleton\")."
+      ]
+    },
+
+    "hero": {
+      "fields": {
+        "badge":     { "type": "localeString" },
+        "h1a":       { "type": "localeString" },
+        "h1b":       { "type": "localeString" },
+        "h1c":       { "type": "localeString" },
+        "paragraph": { "type": "localeString" },
+        "b1":        { "type": "localeString" },
+        "b2":        { "type": "localeString" },
+        "b3":        { "type": "localeString" },
+        "youtubeId": { "type": "string", "note": "ID видео для превью/плеера" }
+      },
+      "notes": [
+        "Один документ (синглтон) или коллекция — но фронт ждёт один актуальный."
+      ]
+    },
+
+    "service": {
+      "fields": {
+        "title":   { "type": "localeString" },
+        "bullets": { "type": "array", "of": { "type": "localeString" } }
+      },
+      "notes": [
+        "Коллекция (3 карточки в текущем UX)."
+      ]
+    },
+
+    "vocalOffer": {
+      "fields": {
+        "title":      { "type": "localeString" },
+        "paragraph":  { "type": "localeString" },
+        "bullets":    { "type": "array", "of": { "type": "localeString" } },
+        "cta1":       { "type": "localeString" },
+        "cta2":       { "type": "localeString" },
+        "priceNote":  { "type": "localeString" },
+        "instagramId":{ "type": "string", "note": "ID поста для встраивания" }
+      }
+    },
+
+    "portfolioitem": {
+      "fields": {
+        "title":  { "type": "localeString" },
+        "kind":   { "type": "string", "note": "enum: 'youtube' | 'instagram'" },
+        "videoId":{ "type": "string", "note": "ID ролика/поста" },
+        "ratio":  { "type": "string", "note": "например '16:9' или '3:4' (для инсты)" }
+      },
+      "legacyTypes": [ "portfolio" ],
+      "notes": [
+        "Коллекция; фронт использует превью YouTube или SVG-заглушку для Instagram."
+      ]
+    },
+
+    "pricingCard": {
+      "fields": {
+        "title":    { "type": "localeString" },
+        "price":    { "type": "localeString", "note": "оставляем строкой: 'от 60 лари/час', 'from 60 GEL/hr' и т.п." },
+        "features": { "type": "array", "of": { "type": "localeString" } }
+      },
+      "legacyTypes": [ "pricingItem" ],
+      "notes": [
+        "Коллекция; фронт показывает сеткой ≥640px и таблицей <640px."
+      ]
+    },
+
+    "locationImage": {
+      "fields": {
+        "photo": { "type": "image", "note": "image + hotspot; фронт использует urlFor(...).width(...).url()" }
+      },
+      "legacyTypes": [ "locationItem" ],
+      "notes": [
+        "Коллекция вертикальных (9:16) картинок; скролл-лента, drag/wheel."
+      ]
+    }
+  },
+
+  "legacy_to_canonical": {
+    "types": {
+      "portfolio":     "portfolioitem",
+      "pricingItem":   "pricingCard",
+      "locationItem":  "locationImage"
+    },
+    "fields": {
+      "siteSettings.ui.formName":     "siteSettings.form.nameLabel",
+      "siteSettings.ui.formPhone":    "siteSettings.form.phoneLabel",
+      "siteSettings.ui.formInterest": "siteSettings.form.interestLabel",
+      "siteSettings.ui.formMessage":  "siteSettings.form.messageLabel",
+      "siteSettings.ui.formSubmit":   "siteSettings.form.submitLabel",
+      "siteSettings.ui.interestOptions[]": "siteSettings.form.interestOptions[] (map to {key, label})"
+    }
+  },
+
+  "frontend_bindings_example": {
+    "header_logo":      "siteSettings.logo -> urlFor(logo).width(…)",
+    "header_nav":       "siteSettings.nav.{services|work|pricing|location|contact|book} (localeString)",
+    "hero_texts":       "hero.{badge, h1a, h1b, h1c, paragraph, b1, b2, b3} (localeString)",
+    "hero_video":       "hero.youtubeId",
+    "services_list":    "service[] → {title, bullets[]}",
+    "vocal_offer":      "vocalOffer → {title, paragraph, bullets[], cta1, cta2, priceNote, instagramId}",
+    "portfolio":        "portfolioitem[] → {title, kind, videoId, ratio}",
+    "pricing_cards":    "pricingCard[] → {title, price, features[]}",
+    "location_gallery": "locationImage[] → {photo}",
+    "contacts_block":   "siteSettings.{phone, email, instagram, address} + siteSettings.form.*",
+    "leads_texts":      "siteSettings.{portfolioLead, pricingLead}"
+  },
+
+  "groq_sanity_checks": {
+    "siteSettings_quick": "*[_type==\"siteSettings\"][0]{ nav, phone, email, instagram, address, portfolioLead, pricingLead, form{ nameLabel, phoneLabel, interestLabel, messageLabel, submitLabel, interestOptions[]{ key, label } }, \"hasLogo\": defined(logo.asset) }",
+    "hero_quick": "*[_type==\"hero\"][0]{ badge, h1a, h1b, h1c, paragraph, b1, b2, b3, youtubeId }",
+    "services_quick": "*[_type==\"service\"]{ title, bullets }",
+    "vocalOffer_quick": "*[_type==\"vocalOffer\"][0]{ title, paragraph, bullets, cta1, cta2, priceNote, instagramId }",
+    "portfolio_quick": "*[_type==\"portfolioitem\"]{ title, kind, videoId, ratio }",
+    "pricing_quick": "*[_type==\"pricingCard\"]{ title, price, features }",
+    "location_quick": "*[_type==\"locationImage\"]{ \"hasPhoto\": defined(photo.asset) }"
+  }
+}
