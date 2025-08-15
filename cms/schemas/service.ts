@@ -2,17 +2,26 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'service',
-  title: 'Service',
+  title: 'Service item',
+  
   type: 'document',
   fields: [
-    defineField({name: 'title', title: 'Title', type: 'string'}),
+    defineField({name: 'title', title: 'Title', type: 'localeString', validation: r => r.required()}),
     defineField({
       name: 'bullets',
       title: 'Bullets',
       type: 'array',
-      of: [{type: 'string'}]
+      of: [{type: 'localeString'}],
     }),
-    defineField({name: 'sortIndex', title: 'Sort index', type: 'number'})
+    defineField({name: 'order', title: 'Order', type: 'number'}),
   ],
-  orderings: [{name: 'sortIndexAsc', by: [{field: 'sortIndex', direction: 'asc'}]}]
+  orderings: [
+    {name: 'orderAsc', title: 'Order ↑', by: [{field: 'order', direction: 'asc'}]},
+  ],
+  preview: {
+    select: {en: 'title.en', ru: 'title.ru', ka: 'title.ka'},
+    prepare({en, ru, ka}) {
+      return {title: en || ru || ka || 'Service item'}
+  },
+},
 })

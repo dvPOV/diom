@@ -1,0 +1,11 @@
+
+# macOS
+.DS_Store
+
+# Local artifacts (do not commit)
+backup-2025-08-15.tar.gz
+cms/sanity.cli.ts
+cms/schemas-map.json
+cms/scripts/
+patch-0002-cms-i18n-all.diff
+patch-0002-index-locale-types.diff

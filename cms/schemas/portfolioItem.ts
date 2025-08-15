@@ -1,29 +1,40 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'portfolioItem',
+  name: 'portfolioitem',
   title: 'Portfolio item',
   type: 'document',
   fields: [
+    defineField({name: 'title', title: 'Title', type: 'localeString'}),
     defineField({
-      name: 'provider',
-      title: 'Provider',
+      name: 'kind',
+      title: 'Kind',
       type: 'string',
-      options: {list: ['youtube', 'vimeo', 'instagram']}
+      options: {list: [
+        {title: 'YouTube', value: 'youtube'},
+        {title: 'Instagram', value: 'instagram'},
+      ]},
+      validation: r => r.required(),
     }),
-    defineField({name: 'videoId', title: 'Video ID', type: 'string'}),
-    defineField({name: 'title', title: 'Title', type: 'string'}),
+    defineField({name: 'videoId', title: 'Video ID', type: 'string', validation: r => r.required()}),
     defineField({
       name: 'ratio',
-      title: 'Aspect ratio (e.g. 3:4 for IG)',
-      type: 'string'
+      title: 'Ratio',
+      type: 'string',
+      options: {list: [
+        {title: '16:9', value: '16:9'},
+        {title: '3:4', value: '3:4'},
+      ]},
     }),
-    defineField({
-      name: 'thumbnail',
-      title: 'Thumbnail (image, optional)',
-      type: 'image'
-    }),
-    defineField({name: 'sortIndex', title: 'Sort index', type: 'number'})
+    defineField({name: 'order', title: 'Order', type: 'number'}),
   ],
-  orderings: [{name: 'sortIndexAsc', by: [{field: 'sortIndex', direction: 'asc'}]}]
+  orderings: [
+    {name: 'orderAsc', title: 'Order ↑', by: [{field: 'order', direction: 'asc'}]},
+  ],
+  preview: {
+    select: {en: 'title.en', ru: 'title.ru', ka: 'title.ka'},
+    prepare({en, ru, ka}) {
+      return {title: en || ru || ka || 'Portfolio item'}
+  },
+},
 })
