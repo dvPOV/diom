@@ -1,0 +1,14 @@
+*** Begin Patch
+*** Update File: web/src/App.jsx
+@@
+-import React, { useEffect, useMemo, useRef, useState } from "react";
++import React, { useEffect, useMemo, useRef, useState } from "react";
+@@
+ import { MOCK } from './mock/content';
+ 
++// --- patch marker (for CI/logs & troubleshooting) ---
++// This constant is harmless and helps us verify that patches are applied in order.
++export const PATCH_MARKER = "texts-to-cms:step0-handshake";
++
+ const ACCENT = "#9A00FF";
+*** End Patch
